@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OSJK // @ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="https://fonts.googleapis.com/css?family=Old+Standard+TT|Playfair+Display+SC" rel="stylesheet">
+</head>
+<body>
+    <div class="container" id="banner">
+        <div class="row">
+            <h1>Østsjællandske Jernbaneklub</h1>
+        </div>
+    </div>
+    
+    <br />
+
+    <div class="navbar navbar-inverse">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("ØSJK", "Index", "Home", new { area = "" }, new { @class = "navbar-brand nav-link-big" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="nav-link">@Html.ActionLink("Kalender", "Index", "Calendar")</li>
+                    <li class="nav-link">@Html.ActionLink("Nyheder", "Index", "News")</li>
+                    <li class="nav-link">@Html.ActionLink("Galleri", "Index", "Gallery")</li>
+                    <li class="nav-link">@Html.ActionLink("Om klubben", "About", "Home")</li>
+                    <li class="nav-link">@Html.ActionLink("Kontakt", "Contact", "Home")</li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <form>
+                            <div class="global-search">
+                                <input id="global-search-input" type="text" class="form-control" placeholder="Søg" />
+                            </div>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p class="footer-text">&copy; @DateTime.Now.Year - OSJK</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <script type="text/javascript">
+        $('#topnavbar').affix({
+            offset: {
+                top: $('#banner').height()
+            }
+        });
+    </script>
+</body>
+</html>

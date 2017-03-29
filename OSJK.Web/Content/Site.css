@@ -1,0 +1,102 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+
+/*.carousel {
+    max-height: 400px;
+    overflow: hidden;
+}
+
+div.item img{
+    width: 100%;
+    height: auto;
+}*/
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: 'Old Standard TT', serif;
+}
+
+img.carousel-image {
+    width: auto;
+    height: 400px;
+    max-height: 400px;
+    text-align: center;
+}
+
+.carousel-inner > .item > img {
+    margin: 0 auto;
+}
+
+p.footer-text {
+    text-align: center;
+}
+
+div#banner h1 {
+    text-align: center;
+    font-family: 'Playfair Display SC', serif;
+}
+
+div.navbar {
+    font-family: 'Old Standard TT', serif;
+}
+
+    div.navbar li.nav-link {
+        font-size: 16px;
+    }
+
+    div.navbar a.nav-link-big {
+        font-size: 20px;
+    }
+
+    div.navbar li.nav-link-search {
+        margin-left: 15px;
+    }
+
+div.global-search {
+    padding-top: 8px;
+}
+
+nav-link-search {
+    margin-left: 15px;
+}
+
+@media only screen and (max-width : 480px) {
+
+    ul.navbar-right {
+        margin-left: 0px;
+        margin-bottom: 15px;
+    }
+}
+
+input#global-search-input {
+    opacity: 0.5;
+}
+
+input#global-search-input:focus {
+    opacity: 1;
+}
