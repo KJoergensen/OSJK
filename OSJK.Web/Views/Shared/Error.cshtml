@@ -2,12 +2,25 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Error</title>
+    <title>Fejl</title>
 </head>
 <body>
     <hgroup>
-        <h1>Error.</h1>
-        <h2>An error occurred while processing your request.</h2>
+        <h1>Hov, noget gik galt.</h1>
+        <h3>Der skete en fejl mens vi håndterede din henvendelse.</h3>
     </hgroup>
+
+    <br />
+
+    @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+    {
+        <div class="error-message">
+            <div class="well">
+                @ViewBag.ErrorMessage   
+            </div>
+        </div>
+    }
+
+    <br />
 </body>
 </html>

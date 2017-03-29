@@ -8,7 +8,8 @@ namespace OSJK.Web.Controllers
 {
     public class CalendarController : Controller
     {
-        // GET: Calendar
+        [HttpGet]
+        [Route("kalender")]
         public ActionResult Index()
         {
             return View();

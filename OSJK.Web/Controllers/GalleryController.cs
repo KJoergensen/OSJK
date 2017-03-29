@@ -8,7 +8,8 @@ namespace OSJK.Web.Controllers
 {
     public class GalleryController : Controller
     {
-        // GET: Gallery
+        [HttpGet]
+        [Route("galleri")]
         public ActionResult Index()
         {
             return View();

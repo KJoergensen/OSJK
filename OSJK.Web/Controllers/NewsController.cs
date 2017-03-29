@@ -8,7 +8,8 @@ namespace OSJK.Web.Controllers
 {
     public class NewsController : Controller
     {
-        // GET: News
+        [HttpGet]
+        [Route("nyheder")]
         public ActionResult Index()
         {
             return View();

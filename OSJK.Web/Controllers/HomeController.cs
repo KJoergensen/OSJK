@@ -12,16 +12,22 @@ namespace OSJK.Web.Controllers
 {
     public class HomeController : Controller
     {
+        [HttpGet]
+        [Route("")]
         public ActionResult Index()
         {
             return View();
         }
 
+        [HttpGet]
+        [Route("omklubben")]
         public ActionResult About()
         {
             return View();
         }
 
+        [HttpGet]
+        [Route("kontakt")]
         public ActionResult Contact()
         {
             return View(new EmailFormVM());
@@ -31,6 +37,7 @@ namespace OSJK.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> SendEmail(EmailFormVM vm)
         {
+            // TODO: Use dropdown for contacts to determine recipient (enum.chosen.value.tostring())s
             if (ModelState.IsValid)
             {
                 var body = "<p>Email Fra: {0} ({1})</p><p>Besked:</p><p>{2}</p>";
@@ -45,14 +52,22 @@ namespace OSJK.Web.Controllers
                 {
                     var credential = new NetworkCredential
                     {
-                        UserName = "test@joergensen.nu", 
-                        Password = "yLXY%zwHzbV4r86&YruecXj@Ie01s8" 
+                        UserName = "test@joergensen.nu",
+                        Password = "yLXY%zwHzbV4r86&YruecXj@Ie01s8"
                     };
                     smtp.Credentials = credential;
                     smtp.Host = "asmtp.unoeuro.com";
                     smtp.Port = 587;
                     smtp.EnableSsl = true;
-                    await smtp.SendMailAsync(message);
+                    try
+                    {
+                        await smtp.SendMailAsync(message);
+                    }
+                    catch (Exception e)
+                    {
+                        ViewBag.ErrorMessage = e.Message;
+                        return View("Error");
+                    }
                     ViewBag.EmailSuccesful = true;
                     ModelState.Clear();
                     return View("Contact", new EmailFormVM());
