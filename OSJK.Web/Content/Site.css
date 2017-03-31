@@ -91,6 +91,18 @@ nav-link-search {
         margin-left: 0px;
         margin-bottom: 15px;
     }
+
+    body {
+        padding-top: 0;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    .navbar {
+        margin-bottom: 0;
+    }
 }
 
 input#global-search-input {
@@ -99,4 +111,13 @@ input#global-search-input {
 
 input#global-search-input:focus {
     opacity: 1;
+}
+
+div.red-bar {
+    height: 10px;
+    background-color: red;
+}
+
+.navbar {
+    border-radius: 0;
 }

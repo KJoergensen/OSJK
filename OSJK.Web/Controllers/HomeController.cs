@@ -56,7 +56,7 @@ namespace OSJK.Web.Controllers
                         Password = "yLXY%zwHzbV4r86&YruecXj@Ie01s8"
                     };
                     smtp.Credentials = credential;
-                    smtp.Host = "asmtp.unoeuro.com";
+                    smtp.Host = "smtp.unoeuro.com";
                     smtp.Port = 587;
                     smtp.EnableSsl = true;
                     try
@@ -65,7 +65,7 @@ namespace OSJK.Web.Controllers
                     }
                     catch (Exception e)
                     {
-                        ViewBag.ErrorMessage = e.Message;
+                        ViewBag.ErrorMessage = "Vi havde problemer med at sende din besked. Prøv venligst igen, eller send til en anden modtager.";
                         return View("Error");
                     }
                     ViewBag.EmailSuccesful = true;
