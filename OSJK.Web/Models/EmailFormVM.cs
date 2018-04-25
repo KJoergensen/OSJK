@@ -1,29 +1,26 @@
 ﻿using OSJK.Core.Enums;
-using System;
-using System.Collections.Generic;
+using OSJK.Web.Resources;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace OSJK.Web.Models
 {
     public class EmailFormVM
     {
-        [Display(Name = "Til")]
-        [Range(1, int.MaxValue, ErrorMessage = "Der skal vælges en modtager")]
+        [Display(Name = nameof(Strings.SYS_TO), ResourceType = typeof(Strings))]
+        [Range(1, int.MaxValue, ErrorMessageResourceName = nameof(Strings.ERROR_CHOOSE_A_RECIPIENT), ErrorMessageResourceType = typeof(Strings))]
         public Contacts Contact { get; set; }
 
-        [Display(Name = "Dit navn")]
-        [Required(ErrorMessage = "Navn skal udfyldes")]
+        [Display(Name = nameof(Strings.SYS_YOUR_NAME), ResourceType = typeof(Strings))]
+        [Required(ErrorMessageResourceName = nameof(Strings.ERROR_NAME_MUST_BE_FILLED_OUT), ErrorMessageResourceType = typeof(Strings))]
         public string FromName { get; set; }
 
-        [Display(Name = "Din email")]
-        [EmailAddress(ErrorMessage = "Email adressen er ufyldig")]
-        [Required(ErrorMessage = "Email skal udfyldes")]
+        [Display(Name = nameof(Strings.SYS_YOUR_EMAIL), ResourceType = typeof(Strings))]
+        [EmailAddress(ErrorMessageResourceName = nameof(Strings.ERROR_EMAIL_ADDRESS_INVALID))]
+        [Required(ErrorMessageResourceName = nameof(Strings.ERROR_EMAIL_MUST_BE_FILLED_OUT), ErrorMessageResourceType = typeof(Strings))]
         public string FromEmail { get; set; }
 
-        [Display(Name = "Besked")]
-        [Required(ErrorMessage = "Besked skal udfyldes")]
+        [Display(Name = nameof(Strings.SYS_MESSAGE), ResourceType = typeof(Strings))]
+        [Required(ErrorMessageResourceName = nameof(Strings.ERROR_MESSAGE_MUST_BE_FILLED_OUT), ErrorMessageResourceType = typeof(Strings))]
         public string Message { get; set; }
     }
 }

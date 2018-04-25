@@ -1,4 +1,5 @@
 ﻿using OSJK.Web.Models;
+using OSJK.Web.Resources;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,12 +41,12 @@ namespace OSJK.Web.Controllers
             // TODO: Use dropdown for contacts to determine recipient (enum.chosen.value.tostring())s
             if (ModelState.IsValid)
             {
-                var body = "<p>Email Fra: {0} ({1})</p><p>Besked:</p><p>{2}</p>";
                 var message = new MailMessage();
+                // TODO: Put values in config (transforms)
                 message.To.Add(new MailAddress("kasp.joer@gmail.com"));
                 message.From = new MailAddress("test@joergensen.nu");
                 message.Subject = "Kontaktformular";
-                message.Body = string.Format(body, vm.FromName, vm.FromEmail, vm.Message);
+                message.Body = $"<p>Email Fra: {vm.FromName} ({vm.FromEmail})</p><p>Besked:</p><p>{vm.Message}</p>";
                 message.IsBodyHtml = true;
 
                 using (var smtp = new SmtpClient())
@@ -65,15 +66,15 @@ namespace OSJK.Web.Controllers
                     }
                     catch (Exception e)
                     {
-                        ViewBag.ErrorMessage = "Vi havde problemer med at sende din besked. Prøv venligst igen, eller send til en anden modtager.";
-                        return View("Error");
+                        ViewBag.ErrorMessage = Strings.ERROR_PROBLEM_SENDING_EMAIL;
+                        return View(MVC.Shared.Views.ViewNames.Error);
                     }
                     ViewBag.EmailSuccesful = true;
                     ModelState.Clear();
-                    return View("Contact", new EmailFormVM());
+                    return View(MVC.Home.Views.ViewNames.Contact, new EmailFormVM());
                 }
             }
-            return View("Contact", vm);
+            return View(MVC.Home.Views.ViewNames.Contact, vm);
         }
     }
 }
