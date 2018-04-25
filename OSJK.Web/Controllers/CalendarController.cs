@@ -6,11 +6,11 @@ using System.Web.Mvc;
 
 namespace OSJK.Web.Controllers
 {
-    public class CalendarController : Controller
+    public partial class CalendarController : Controller
     {
         [HttpGet]
         [Route("kalender")]
-        public ActionResult Index()
+        public virtual ActionResult Index()
         {
             return View();
         }

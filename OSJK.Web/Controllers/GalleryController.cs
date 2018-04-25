@@ -6,11 +6,11 @@ using System.Web.Mvc;
 
 namespace OSJK.Web.Controllers
 {
-    public class GalleryController : Controller
+    public partial class GalleryController : Controller
     {
         [HttpGet]
         [Route("galleri")]
-        public ActionResult Index()
+        public virtual ActionResult Index()
         {
             return View();
         }

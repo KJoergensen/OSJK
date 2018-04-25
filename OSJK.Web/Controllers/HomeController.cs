@@ -10,32 +10,32 @@ using System.Web.Mvc;
 
 namespace OSJK.Web.Controllers
 {
-    public class HomeController : Controller
+    public partial class HomeController : Controller
     {
         [HttpGet]
         [Route("")]
-        public ActionResult Index()
+        public virtual ActionResult Index()
         {
             return View();
         }
 
         [HttpGet]
         [Route("omklubben")]
-        public ActionResult About()
+        public virtual ActionResult About()
         {
             return View();
         }
 
         [HttpGet]
         [Route("kontakt")]
-        public ActionResult Contact()
+        public virtual ActionResult Contact()
         {
             return View(new EmailFormVM());
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> SendEmail(EmailFormVM vm)
+        public virtual async Task<ActionResult> SendEmail(EmailFormVM vm)
         {
             // TODO: Use dropdown for contacts to determine recipient (enum.chosen.value.tostring())s
             if (ModelState.IsValid)

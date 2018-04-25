@@ -6,11 +6,11 @@ using System.Web.Mvc;
 
 namespace OSJK.Web.Controllers
 {
-    public class NewsController : Controller
+    public partial class NewsController : Controller
     {
         [HttpGet]
         [Route("nyheder")]
-        public ActionResult Index()
+        public virtual ActionResult Index()
         {
             return View();
         }
